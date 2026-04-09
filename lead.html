@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corpo Mágico</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #111;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    color: #1e90ff;
+    font-size: 28px;
+}
+
+.sub {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.box {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.8s ease forwards;
+}
+
+.box:nth-child(2){animation-delay:0.2s;}
+.box:nth-child(3){animation-delay:0.4s;}
+.box:nth-child(4){animation-delay:0.6s;}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.dor-opcoes {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dor-opcoes span {
+    display: inline-block;
+    margin: 5px 8px 5px 0;
+    background: #eaf3ff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(90deg, #1e90ff, #0077ff);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+}
+
+.highlight {
+    color: #1e90ff;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Alívio de Dor + Correção Postural</h1>
+<p class="sub">Resultado perceptível já na primeira sessão</p>
+
+<div class="box">
+<p>Você sente:</p>
+<ul>
+<li>✔ Dor nas costas 😖</li>
+<li>✔ Dor no pescoço 😣</li>
+<li>✔ Ombro travado 😫</li>
+<li>✔ Postura ruim 😩</li>
+</ul>
+</div>
+
+<div class="box">
+<p><span class="highlight">Sessão prática:</span> ajuste no corpo + alívio imediato ⚡</p>
+</div>
+
+<div class="box">
+
+<input type="text" id="nome" placeholder="Seu nome">
+<input type="tel" id="telefone" placeholder="Seu WhatsApp">
+<input type="email" id="email" placeholder="Seu e-mail">
+
+<p style="margin-top:15px;">Onde você sente dor?</p>
+
+<div class="dor-opcoes">
+<span>🦴 Lombar</span>
+<span>🧠 Cervical</span>
+<span>💪 Ombro</span>
+<span>🧍 Postura</span>
+</div>
+
+<select id="dor">
+<option value="">Selecione sua dor</option>
+<option>🦴 Lombar</option>
+<option>🧠 Cervical</option>
+<option>💪 Ombro</option>
+<option>🧍 Postura geral</option>
+</select>
+
+<button onclick="enviar()">Quero corrigir minha dor</button>
+
+</div>
+
+</div>
+
+<script>
+function enviar() {
+
+let nome = document.getElementById('nome').value;
+let telefone = document.getElementById('telefone').value;
+let email = document.getElementById('email').value;
+let dor = document.getElementById('dor').value;
+
+if(nome == "" || telefone == "" || email == "" || dor == ""){
+    alert("Preencha todos os campos");
+    return;
+}
+
+// MENSAGEM COMPLETA (CAPTURA TOTAL DO LEAD)
+let msg = `Olá! Me chamo ${nome}.
+Sinto dor em ${dor}.
+
+📞 Telefone: ${telefone}
+📧 Email: ${email}
+
+Quero agendar uma sessão.`;
+
+// WHATSAPP (FUNCIONA NO GITHUB)
+let url = `https://wa.me/5521979986742?text=${encodeURIComponent(msg)}`;
+
+window.location.href = url;
+
+}
+</script>
+
+</body>
+</html>
